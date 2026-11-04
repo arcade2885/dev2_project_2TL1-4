@@ -8,7 +8,38 @@ def main():
     jocker_active = False
 
     while True:
-        break
+        mes_equipes = load_data()
+        print("\nMenu principal :")
+        print("1. Créer une nouvelle équipe")
+        print("2. Afficher les équipes existantes")
+        print("3. Question")
+        print("4. Quitter le jeu")
+        input_choice = input("Choisissez une option (1-4) : ")
+        if input_choice == "1":
+            new_team()
+        elif input_choice == "2":
+            if not mes_equipes:
+                print("Aucune équipe n'existe.")
+            else:
+                print("Équipes existantes :")
+                for equipe in mes_equipes:
+                    print(equipe)
+        elif input_choice == "3":
+            while True:
+                choix = afficherQuestion()
+                afficherReponse(choix)
+                add_points(jocker_active)
+                show_scores()
+                print("1. Continuer avec une autre question")
+                print("2. Retour au menu principal")
+                sub_choice = input("Choisissez une option (1-2) : ")
+                if sub_choice == "1":
+                    continue
+                elif sub_choice == "2":
+                    break
+        elif input_choice == "4":
+            end_game()
+            break
             
                     
 
