@@ -1,8 +1,12 @@
-
+from equipe import Equipe, CreerEquipe, SameNameError
+from storage import load_data, save_data
 
 def main():
-    pass
-
+    mes_equipes = load_data()
+    
+    while True:
+        print(mes_equipes)
+        pass
 
 if __name__ == "__main__":
     main()

@@ -1,4 +1,6 @@
+
 import itertools
+#from storage import save_data
 class SameNameError(Exception):
     pass
 class Equipe:
@@ -18,15 +20,34 @@ class Equipe:
         self.jokerUtilise = True
     def __str__(self):
         return f"L'équipe {self.nom} à l'id {self.id} à {self.scoreTotal} points"
+    
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "nom": self.nom,
+            "scoreTotal": self.scoreTotal,
+            "jokerUtilise": self.jokerUtilise
+        }
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        return cls(
+            equipe_id=data.get("id"),
+            nom=data.get("nom"),
+            scoreTotal=data.get("scoreTotal", 0),
+            jokerUtilise=data.get("jokerUtilise", False)
+        )
 
 def CreerEquipe():
     a = input("introduit le nom de l'équipe: ")
-    truc = Equipe(a)
-    print(f"{truc} a ete creer")
+    New_equipe = Equipe(a)
+    print(f"{New_equipe} a ete creer")
+    return New_equipe
 
 def main():
     a = Equipe("A")
     b = Equipe("B")
+    test = Equipe('test')
     print(a.nom)
     print(a.id)
     print(a.scoreTotal)
@@ -39,6 +60,8 @@ def main():
     print(b.id)
     print(a)
     CreerEquipe()
+    save_data([a,b])
+
 
 if __name__ == "__main__":
     main()
