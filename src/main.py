@@ -36,14 +36,20 @@ def afficherQuestion():
     return choix1
 
 def afficherReponse(choix1):
-    print("Voulez-vous affiché la réponse ? oui/non")
 
-    choix2 = str(input())
+    choix2=""
 
-    if choix2 == "oui":
-        print("Réponse :",listeReponse[choix1-1])
-    else:
-        print("La réponse reste masqué")
+    while choix2 !="oui":
+        print("Voulez-vous affiché la réponse ? oui/non/quitter")
+
+        choix2 = str(input())
+
+        if choix2 == "oui":
+            print("Réponse :",listeReponse[choix1-1])
+        elif choix2 == "quitter":
+            break
+        else:
+            print("Et maintenant ?.")
 
 choix = afficherQuestion()
 afficherReponse(choix)
