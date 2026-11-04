@@ -22,8 +22,14 @@ listeReponse=[r1,r2,r3]
 
 def afficherQuestion():
 
-    print("Entrer 1, 2 ou 3 :")
-    choix1 = int(input())
+    choix1=0
+
+    while choix1 < 1 or choix1 > 3:
+        print("Entrer 1, 2 ou 3 :")
+        choix1 = int(input())
+
+        if choix1 < 1 or choix1 > 3:
+            print("Choix invalide, recommencez.")
 
     print(listeQuestion[choix1-1])
 
