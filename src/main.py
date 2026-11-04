@@ -6,7 +6,7 @@ def main():
     
     while True:
         print(mes_equipes)
-        pass
+        break
 
 if __name__ == "__main__":
     main()
