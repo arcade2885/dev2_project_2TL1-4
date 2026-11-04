@@ -1,7 +1,7 @@
 import json
 import itertools
 from pathlib import Path
-#from equipe import Equipe
+from equipe import Equipe
 
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
@@ -23,7 +23,7 @@ def load_data() :
             equipes = [Equipe.from_dict(eq) for eq in equipes_data]
             if equipes:
                 max_id = max(eq.id for eq in equipes)
-                Equipe.id_counter = itertools.count(max_id + 1)      
+                Equipe.id = itertools.count(max_id + 1)
             return equipes
     except (json.JSONDecodeError, OSError):
         print("ERROR")
@@ -37,4 +37,4 @@ def save_data(listEquipes: list):
 
 
 #save_data({"equipes":[1,2,3,4]})
-print(load_data())
+#print(load_data())

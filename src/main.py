@@ -55,5 +55,5 @@ def afficherReponse(choix1):
         else:
             print("Et maintenant ?.")
 
-choix = afficherQuestion()
-afficherReponse(choix)
+#choix = afficherQuestion()
+#afficherReponse(choix)

@@ -5,8 +5,8 @@ class SameNameError(Exception):
     pass
 class Equipe:
     id = itertools.count(1)
-    def __init__(self, nom:str, scoreTotal=0, jokerUtilise=False):
-        self.id = next(Equipe.id)
+    def __init__(self, nom:str, scoreTotal=0, jokerUtilise=False, equipe_id=None):
+        self.id = next(Equipe.id) if equipe_id is None else equipe_id
         #if nom is in SoireeQuiz:
             #raise SameNameError("Ce nom d'équipe exsite déja")
         self.nom = nom
@@ -43,7 +43,7 @@ def CreerEquipe():
     New_equipe = Equipe(a)
     print(f"{New_equipe} a ete creer")
     return New_equipe
-
+'''
 def main():
     a = Equipe("A")
     b = Equipe("B")
@@ -62,6 +62,6 @@ def main():
     CreerEquipe()
     save_data([a,b])
 
-
 if __name__ == "__main__":
     main()
+'''
