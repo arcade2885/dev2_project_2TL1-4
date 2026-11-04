@@ -1,15 +1,22 @@
 from equipe import Equipe, CreerEquipe, SameNameError
 from storage import load_data, save_data
+mes_equipes = load_data()
+
 
 def main():
     mes_equipes = load_data()
-    
-    while True:
-        print(mes_equipes)
-        break
+    jocker_active = False
 
-if __name__ == "__main__":
-    main()
+    while True:
+        break
+            
+                    
+
+def add_points(jocker_active):
+    print('test points', jocker_active)
+
+def show_scores():
+    print("test show scores")
 
 
 q1="Quel est la capitale du Congo ?"
@@ -57,3 +64,22 @@ def afficherReponse(choix1):
 
 #choix = afficherQuestion()
 #afficherReponse(choix)
+
+
+def new_team():
+    try:
+        new_team = CreerEquipe()
+        mes_equipes.append(new_team)
+        save_data(mes_equipes)
+    except SameNameError as e:
+        print(e)
+
+def end_game():
+    print("Merci d'avoir joué !")
+    save_data(mes_equipes)
+    
+
+
+
+if __name__ == "__main__":
+    main()
