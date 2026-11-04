@@ -24,6 +24,12 @@ r3="Bogota"
 
 listeReponse=[r1,r2,r3]
 
+d1 = "Facile"
+d2 = "Facile"
+d3 = "Moyenne"
+
+listeDifficulte = [d1, d2, d3]
+
 def afficherQuestion():
 
     choix1=0
