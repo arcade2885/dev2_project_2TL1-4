@@ -1,15 +1,53 @@
 from equipe import Equipe, CreerEquipe, SameNameError
 from storage import load_data, save_data
+mes_equipes = load_data()
+
 
 def main():
     mes_equipes = load_data()
-    
-    while True:
-        print(mes_equipes)
-        break
+    jocker_active = False
 
-if __name__ == "__main__":
-    main()
+    while True:
+        mes_equipes = load_data()
+        print("\nMenu principal :")
+        print("1. Créer une nouvelle équipe")
+        print("2. Afficher les équipes existantes")
+        print("3. Question")
+        print("4. Quitter le jeu")
+        input_choice = input("Choisissez une option (1-4) : ")
+        if input_choice == "1":
+            new_team()
+        elif input_choice == "2":
+            if not mes_equipes:
+                print("Aucune équipe n'existe.")
+            else:
+                print("Équipes existantes :")
+                for equipe in mes_equipes:
+                    print(equipe)
+        elif input_choice == "3":
+            while True:
+                choix = afficherQuestion()
+                afficherReponse(choix)
+                add_points(jocker_active)
+                show_scores()
+                print("1. Continuer avec une autre question")
+                print("2. Retour au menu principal")
+                sub_choice = input("Choisissez une option (1-2) : ")
+                if sub_choice == "1":
+                    continue
+                elif sub_choice == "2":
+                    break
+        elif input_choice == "4":
+            end_game()
+            break
+            
+                    
+
+def add_points(jocker_active):
+    print('test points', jocker_active)
+
+def show_scores():
+    print("test show scores")
 
 
 q1="Quel est la capitale du Congo ?"
@@ -63,3 +101,22 @@ def afficherReponse(choix1):
 
 #choix = afficherQuestion()
 #afficherReponse(choix)
+
+
+def new_team():
+    try:
+        new_team = CreerEquipe()
+        mes_equipes.append(new_team)
+        save_data(mes_equipes)
+    except SameNameError as e:
+        print(e)
+
+def end_game():
+    print("Merci d'avoir joué !")
+    save_data(mes_equipes)
+    
+
+
+
+if __name__ == "__main__":
+    main()
