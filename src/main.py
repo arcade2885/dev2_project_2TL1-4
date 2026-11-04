@@ -1,5 +1,17 @@
 from equipe import Equipe, CreerEquipe, SameNameError
 from storage import load_data, save_data
+from joker import utiliser_joker
+from classement import afficher_classement
+
+
+# class tempo a changer plus tard 
+class Question:
+    pass
+
+class Participation:
+    pass
+
+
 mes_equipes = load_data()
 
 
@@ -26,10 +38,22 @@ def main():
                     print(equipe)
         elif input_choice == "3":
             while True:
+                question = Question()
+                question.estAffichee = False # a changer plus tard 
+                question.estPariable = False # a changer plus tard 
+
+                participations = []
+                for e in mes_equipes:
+                    p = Participation()
+                    p.jokerActif = False # a changer plus tard
+                    participations = participations + [p]
+
+                utiliser_joker(mes_equipes, question, participations)
+
                 choix = afficherQuestion()
                 afficherReponse(choix)
                 add_points(jocker_active)
-                show_scores()
+                print(afficher_classement(mes_equipes))
                 print("1. Continuer avec une autre question")
                 print("2. Retour au menu principal")
                 sub_choice = input("Choisissez une option (1-2) : ")
