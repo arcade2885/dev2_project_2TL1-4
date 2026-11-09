@@ -109,7 +109,7 @@ def afficherQuestion():
     """
     Pre: listeQuestion à au moins 1 question
     Post: un numéro est choisi, la question est affiché et le numéro choisi est retourné
-    """"
+    """
     choix1=0
 
     while choix1 < 1 or choix1 > 3:
@@ -127,7 +127,7 @@ def afficherReponse(choix1):
     """
     Pre: choix1 est une valeur correct et listeReponse contient autant de réponse que ListeQuestion de question
     Post: si oui est sélèctionner monter la réponse et si quitter l'est arreter la fonction
-    """"
+    """
     choix2=""
 
     while choix2 !="oui":
