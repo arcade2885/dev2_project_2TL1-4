@@ -25,8 +25,9 @@ def main():
         print("1. Créer une nouvelle équipe")
         print("2. Afficher les équipes existantes")
         print("3. Question")
-        print("4. Quitter le jeu")
-        input_choice = input("Choisissez une option (1-4) : ")
+        print("4. reset les scores")
+        print("5. Quitter le jeu")
+        input_choice = input("Choisissez une option (1-5) : ")
         if input_choice == "1":
             new_team()
         elif input_choice == "2":
@@ -62,6 +63,8 @@ def main():
                 elif sub_choice == "2":
                     break
         elif input_choice == "4":
+            reset_scores()
+        elif input_choice == "5":
             end_game()
             break
             
@@ -69,11 +72,11 @@ def main():
 
 def add_points(jocker):
     for i in range(len(mes_equipes)):
-        print(f"Équipe {mes_equipes[i].nom}")
+        print(f"Équipe {mes_equipes[i].nom} ID: {mes_equipes[i].id}")
     print('quelle equipe a reçu les points ?')
-    input_choice = input("Entrez le nom de l'équipe : ")
+    input_choice = input("Entrez le ID de l'équipe : ")
     for equipe in mes_equipes:
-        if equipe.nom == input_choice:
+        if equipe.id == int(input_choice):
             points = 1
             if jocker:
                 points *= 2
@@ -83,8 +86,11 @@ def add_points(jocker):
             return
     print('test points', jocker)
 
-def show_scores():
-    print("test show scores")
+def reset_scores():
+    for equipe in mes_equipes:
+        equipe.scoreTotal = 0
+    save_data(mes_equipes)
+    print("Scores réinitialisés pour toutes les équipes.")
 
 
 q1="Quel est la capitale du Congo ?"
