@@ -72,8 +72,11 @@ def main():
 
 def add_points(jocker):
     """
-    Pre: 
-    Post: 
+    Pre:mes_equipes contient des objets équipe avec un identifiant et
+    une méthode ajouterPoints(). Pour garantir l'ajout de points,l'utilisateur saisit un identifiant numérique correspondant à une équipe 
+    Post: Si l'identifiant correspond à une équipe, son score augmente de 1 point,
+    ou de 2 points si jocker est vrai, puis les équipes sont sauvegardées. Si aucun identifiant ne correspond, aucun score n'est modifié.
+    .
     """
     for i in range(len(mes_equipes)):
         print(f"Équipe {mes_equipes[i].nom} ID: {mes_equipes[i].id}")
