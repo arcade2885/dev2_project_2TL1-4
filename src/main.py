@@ -71,6 +71,10 @@ def main():
                     
 
 def add_points(jocker):
+    """
+    Pre: 
+    Post: 
+    """
     for i in range(len(mes_equipes)):
         print(f"Équipe {mes_equipes[i].nom} ID: {mes_equipes[i].id}")
     print('quelle equipe a reçu les points ?')

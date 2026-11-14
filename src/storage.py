@@ -10,10 +10,10 @@ DATA_FILE = DATA_DIR / "data.json"
 def load_data() : 
     """Charge les équipes enregistrées dans le fichier JSON.
 
-    Préconditions : aucune ; le fichier peut ne pas encore exister. S'il existe,
+    Pre : aucune ; le fichier peut ne pas encore exister. S'il existe,
     il doit contenir un objet JSON avec une clé ``equipes`` dont la valeur est
     une liste de dictionnaires compatibles avec ``Equipe.from_dict``.
-    Postconditions : renvoie une liste d'objets ``Equipe``. Si le fichier est
+    Post : renvoie une liste d'objets ``Equipe``. Si le fichier est
     absent, illisible ou contient un JSON invalide, renvoie une liste vide.
     """
     if not DATA_FILE.exists():
@@ -40,9 +40,9 @@ def load_data() :
 def save_data(listEquipes: list):
     """Enregistre la liste d'équipes dans le fichier JSON.
 
-    Préconditions : ``listEquipes`` est une liste d'objets ``Equipe`` dont
+    Pre : ``listEquipes`` est une liste d'objets ``Equipe`` dont
     ``to_dict()`` renvoie des valeurs sérialisables en JSON.
-    Postconditions : le dossier de données existe et le fichier contient un
+    Post : le dossier de données existe et le fichier contient un
     objet JSON avec une clé ``equipes`` correspondant à cette liste.
     Une erreur d'accès au fichier ou de sérialisation est propagée à l'appelant.
     """
