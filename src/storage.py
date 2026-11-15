@@ -2,7 +2,7 @@ import json
 import itertools
 from pathlib import Path
 from equipe import Equipe
-from question import question
+from question import CreerQuestion, question
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 DATA_FILE_EQUIPE = DATA_DIR / "equipe.json"
@@ -77,3 +77,33 @@ def load_data_question() :
         return []
 #save_data({"equipes":[1,2,3,4]})
 #print(load_data())
+
+
+
+
+"""
+
+q1="Quel est la capitale du Congo ?"
+q2="Quel est la capitale de Chine ?"
+q3="Quel est la capitale de la Colombie ?"
+
+listeQuestion=[q1,q2,q3]
+
+r1="Brazzaville"
+r2="Pékin"
+r3="Bogota"
+
+listeReponse=[r1,r2,r3]
+
+d1 = "Facile"
+d2 = "Facile"
+d3 = "Moyenne"
+
+listeDifficulte = [d1, d2, d3]
+listeQuestion = []
+listeQuestion.append(CreerQuestion(q1, r1,1, d1))
+listeQuestion.append(CreerQuestion(q2, r2,1, d2))
+listeQuestion.append(CreerQuestion(q3, r3,2, d3))
+save_data_question(listeQuestion)
+
+"""

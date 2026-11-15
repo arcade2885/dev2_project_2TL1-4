@@ -39,7 +39,7 @@ def main():
                     print(equipe)
         elif input_choice == "3":
             while True:
-                question = Question()
+                question = question()
                 question.estAffichee = False # a changer plus tard 
                 question.estPariable = False # a changer plus tard 
 
@@ -98,30 +98,6 @@ def reset_scores():
         equipe.scoreTotal = 0
     save_data(mes_equipes)
     print("Scores réinitialisés pour toutes les équipes.")
-
-
-q1="Quel est la capitale du Congo ?"
-q2="Quel est la capitale de Chine ?"
-q3="Quel est la capitale de la Colombie ?"
-
-listeQuestion=[q1,q2,q3]
-
-r1="Brazzaville"
-r2="Pékin"
-r3="Bogota"
-
-listeReponse=[r1,r2,r3]
-
-d1 = "Facile"
-d2 = "Facile"
-d3 = "Moyenne"
-
-listeDifficulte = [d1, d2, d3]
-listeQuestion = []
-listeQuestion.append(CreerQuestion(q1, r1,1, d1))
-listeQuestion.append(CreerQuestion(q2, r2,1, d2))
-listeQuestion.append(CreerQuestion(q3, r3,2, d3))
-save_data_question(listeQuestion)
 
 
 def afficherQuestion():

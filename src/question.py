@@ -7,41 +7,40 @@ class question:
         self.__reponse = reponse
         self.__points = points
         self.__difficulte = difficulte
-
-    def get_id(self):
-        return self.__id
-
-    def get_question(self):
-        return self.__question
-    
-    def get_reponse(self):
-        return self.__reponse
     @property
-    def set_reponse(self, reponse):
+    def id(self):
+        return self.__id
+    @property
+    def question(self):
+        return self.__question
+    @property
+    def reponse(self):
+        return self.__reponse
+    @reponse.setter
+    def reponse(self, reponse):
         self.__reponse = reponse
-
-    def get_difficulte(self):
+    @property
+    def difficulte(self):
         return self.__difficulte
 
-    @property
-    def set_difficulte(self, difficulte):
+    @difficulte.setter
+    def difficulte(self, difficulte):
         self.__difficulte = difficulte
-
-    def get_points(self):
+    @property
+    def points(self):
         return self.__points
 
-    @property
-    def set_points(self, points):
+    @points.setter
+    def points(self, points):
         self.__points = points
 
-    @classmethod
     def to_dict(self):
         return {
-            "id": self.__id,
-            "question": self.__question,
-            "reponse": self.__reponse,
-            "points": self.__points,
-            "difficulte": self.__difficulte
+            "id": self.id,
+            "question": self.question,
+            "reponse": self.reponse,
+            "points": self.points,
+            "difficulte": self.difficulte
         }
 
     @classmethod
