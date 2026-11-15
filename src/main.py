@@ -2,7 +2,7 @@ from equipe import Equipe, CreerEquipe, SameNameError
 from storage import load_data_equipe, save_data_equipe, save_data_question, load_data_question
 from joker import utiliser_joker
 from classement import afficher_classement
-from question import Question,CreerQuestion
+from question import question,CreerQuestion
 
 
 class Participation:
@@ -118,9 +118,9 @@ d3 = "Moyenne"
 
 listeDifficulte = [d1, d2, d3]
 listeQuestion = []
-listeQuestion.append(CreerQuestion(q1, r1, d1))
-listeQuestion.append(CreerQuestion(q2, r2, d2))
-listeQuestion.append(CreerQuestion(q3, r3, d3))
+listeQuestion.append(CreerQuestion(q1, r1,1, d1))
+listeQuestion.append(CreerQuestion(q2, r2,1, d2))
+listeQuestion.append(CreerQuestion(q3, r3,2, d3))
 save_data_question(listeQuestion)
 
 
