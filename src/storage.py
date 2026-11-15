@@ -2,7 +2,7 @@ import json
 import itertools
 from pathlib import Path
 from equipe import Equipe
-
+from question import question
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 DATA_FILE_EQUIPE = DATA_DIR / "equipe.json"
@@ -57,5 +57,23 @@ def save_data_question(listQuestions: list):
     data ={"questions": [q.to_dict() for q in listQuestions]}
     with open(DATA_FILE_QUESTION, "w", encoding="utf-8") as file:
         json.dump(data, file)
+
+def load_data_question() :
+    if not DATA_FILE_QUESTION.exists():
+        print('no data')
+        return []
+
+    try:
+         with open(DATA_FILE_QUESTION, "r", encoding="utf-8") as file:
+            data = json.load(file)
+            questions_data = data.get("questions", [])
+            questions = [question.from_dict(q) for q in questions_data]
+            if questions:
+                max_id = max(q.get_id() for q in questions)
+                question.id = itertools.count(max_id + 1)
+            return questions
+    except (json.JSONDecodeError, OSError):
+        print("ERROR")
+        return []
 #save_data({"equipes":[1,2,3,4]})
 #print(load_data())
