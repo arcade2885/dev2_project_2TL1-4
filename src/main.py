@@ -39,9 +39,9 @@ def main():
                     print(equipe)
         elif input_choice == "3":
             while True:
-                question = question()
-                question.estAffichee = False # a changer plus tard 
-                question.estPariable = False # a changer plus tard 
+                #question = question()
+                #question.estAffichee = False # a changer plus tard 
+                #question.estPariable = False # a changer plus tard 
 
                 participations = []
                 for e in mes_equipes:
