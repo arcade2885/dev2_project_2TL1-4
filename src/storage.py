@@ -5,9 +5,10 @@ from equipe import Equipe
 
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-DATA_FILE = DATA_DIR / "data.json"
+DATA_FILE_EQUIPE = DATA_DIR / "equipe.json"
+DATA_FILE_QUESTION = DATA_DIR / "question.json"
 
-def load_data() : 
+def load_data_equipe() : 
     """Charge les équipes enregistrées dans le fichier JSON.
 
     Pre : aucune ; le fichier peut ne pas encore exister. S'il existe,
@@ -16,7 +17,7 @@ def load_data() :
     Post : renvoie une liste d'objets Equipe. Si le fichier est
     absent, illisible ou contient un JSON invalide, renvoie une liste vide.
     """
-    if not DATA_FILE.exists():
+    if not DATA_FILE_EQUIPE.exists():
         print('no data')
         return []
 
@@ -25,7 +26,7 @@ def load_data() :
 #            return json.load(file)
 
     try:
-         with open(DATA_FILE, "r", encoding="utf-8") as file:
+         with open(DATA_FILE_EQUIPE, "r", encoding="utf-8") as file:
             data = json.load(file)
             equipes_data = data.get("equipes", [])
             equipes = [Equipe.from_dict(eq) for eq in equipes_data]
@@ -37,7 +38,7 @@ def load_data() :
         print("ERROR")
         return []
 
-def save_data(listEquipes: list):
+def save_data_equipe(listEquipes: list):
     """Enregistre la liste d'équipes dans le fichier JSON.
 
     Pre : listEquipes est une liste d'objets Equipe dont
@@ -48,9 +49,13 @@ def save_data(listEquipes: list):
     """
     DATA_DIR.mkdir(parents=True,exist_ok=True)
     data ={"equipes": [eq.to_dict() for eq in listEquipes]}
-    with open(DATA_FILE, "w", encoding="utf-8") as file:
+    with open(DATA_FILE_EQUIPE, "w", encoding="utf-8") as file:
         json.dump(data, file)
 
-
+def save_data_question(listQuestions: list):
+    DATA_DIR.mkdir(parents=True,exist_ok=True)
+    data ={"questions": [q.to_dict() for q in listQuestions]}
+    with open(DATA_FILE_QUESTION, "w", encoding="utf-8") as file:
+        json.dump(data, file)
 #save_data({"equipes":[1,2,3,4]})
 #print(load_data())
