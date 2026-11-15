@@ -2,11 +2,8 @@ from equipe import Equipe, CreerEquipe, SameNameError
 from storage import load_data, save_data
 from joker import utiliser_joker
 from classement import afficher_classement
+from question import Question,CreerQuestion
 
-
-# class tempo a changer plus tard 
-class Question:
-    pass
 
 class Participation:
     pass
