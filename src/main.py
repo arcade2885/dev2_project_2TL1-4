@@ -1,5 +1,5 @@
 from equipe import Equipe, CreerEquipe, SameNameError
-from storage import load_data, save_data
+from storage import load_data_equipe, save_data_equipe, save_data_question, load_data_question
 from joker import utiliser_joker
 from classement import afficher_classement
 from question import Question,CreerQuestion
@@ -7,7 +7,10 @@ from question import Question,CreerQuestion
 
 class Participation:
     pass
-
+def load_data():
+    return load_data_equipe()
+def save_data(listEquipes: list):
+    save_data_equipe(listEquipes)
 
 mes_equipes = load_data()
 
@@ -114,6 +117,12 @@ d2 = "Facile"
 d3 = "Moyenne"
 
 listeDifficulte = [d1, d2, d3]
+listeQuestion = []
+listeQuestion.append(CreerQuestion(q1, r1, d1))
+listeQuestion.append(CreerQuestion(q2, r2, d2))
+listeQuestion.append(CreerQuestion(q3, r3, d3))
+save_data_question(listeQuestion)
+
 
 def afficherQuestion():
     """
