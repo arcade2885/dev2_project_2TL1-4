@@ -18,7 +18,7 @@ mes_equipes = load_data()
 def main():
     mes_equipes = load_data()
     jocker_active = False
-
+    mes_questions = load_data_question()
     while True:
         mes_equipes = load_data()
         print("\nMenu principal :")
@@ -51,8 +51,8 @@ def main():
 
                 utiliser_joker(mes_equipes, question, participations)
 
-                choix = afficherQuestion()
-                afficherReponse(choix)
+                choix = afficherQuestion(mes_questions)
+                afficherReponse(choix, mes_questions)
                 add_points(jocker_active)
                 print(afficher_classement(mes_equipes))
                 print("1. Continuer avec une autre question")
@@ -100,7 +100,7 @@ def reset_scores():
     print("Scores réinitialisés pour toutes les équipes.")
 
 
-def afficherQuestion():
+def afficherQuestion(listeQuestion):
     """
     Pre: listeQuestion à au moins 1 question
     Post: un numéro est choisi, la question est affiché et le numéro choisi est retourné
@@ -114,11 +114,11 @@ def afficherQuestion():
         if choix1 < 1 or choix1 > 3:
             print("Choix invalide, recommencez.")
 
-    print(listeQuestion[choix1-1])
+    print(listeQuestion[choix1-1].question)
 
     return choix1
 
-def afficherReponse(choix1):
+def afficherReponse(choix1,listeQuestion):
     """
     Pre: choix1 est une valeur correct et listeReponse contient autant de réponse que ListeQuestion de question
     Post: si oui est sélèctionner monter la réponse et si quitter l'est arreter la fonction
@@ -131,7 +131,7 @@ def afficherReponse(choix1):
         choix2 = str(input())
 
         if choix2 == "oui":
-            print("Réponse :",listeReponse[choix1-1])
+            print("Réponse :",listeQuestion[choix1-1].reponse)
         elif choix2 == "quitter":
             break
         else:
