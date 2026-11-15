@@ -69,7 +69,7 @@ def load_data_question() :
             questions_data = data.get("questions", [])
             questions = [question.from_dict(q) for q in questions_data]
             if questions:
-                max_id = max(q.id() for q in questions)
+                max_id = max(q.id for q in questions)
                 question.id = itertools.count(max_id + 1)
             return questions
     except (json.JSONDecodeError, OSError):
