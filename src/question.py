@@ -33,3 +33,28 @@ class question:
     @property
     def set_points(self, points):
         self.__points = points
+
+    @classmethod
+    def to_dict(self):
+        return {
+            "id": self.__id,
+            "question": self.__question,
+            "reponse": self.__reponse,
+            "points": self.__points,
+            "difficulte": self.__difficulte
+        }
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        return cls(
+            question=data.get("question"),
+            reponse=data.get("reponse"),
+            points=data.get("points"),
+            difficulte=data.get("difficulte", "")
+        )
+
+
+def CreerQuestion(question_txt,reponse_txt,points,difficulte=""):
+    New_question = question(question_txt,reponse_txt,points,difficulte)
+    #print(f"{New_question} a ete creer")
+    return New_question
