@@ -10,12 +10,12 @@ def gui(equipes, question, participations):
     txtEquipes = ""
     i = 0
     for e in equipes:
-        txtEquipes = txtEquipes + str(i) + " " + e.nom 
+        txtEquipes = txtEquipes + str(i) + " " + e.nom + "\n"
         i = i + 1
 
 
-    tk.Label(SoireQuiz, text=txtEquipes).pack()
-    tk.Label(SoireQuiz, text="Entrez le numéro de l'équipe qui souhaite utilisée sont joker : (Si aucune équipe souhaite utilisé sont joker appuyer simple sur continue sans introduire de numéro dans la boite)").pack()
+    tk.Label(SoireQuiz, text="Equipe : " + txtEquipes).pack()
+    tk.Label(SoireQuiz, text="Entrez le numéro de l'équipe qui souhaite utilisée sont joker : \n(Si aucune équipe souhaite utilisé sont joker appuyer simple sur continue sans introduire de numéro dans la boite)").pack()
     
     boite = tk.Entry(SoireQuiz)
     boite.pack()
@@ -39,7 +39,7 @@ def gui(equipes, question, participations):
                 mess.config(text=activer_joker(equipes[num], question, participations[num]))
                 classement.config(text=afficher_classement(equipes))
 
-                
+
 
     # les 2 boutton pour continuer et passer a la suite du quiz il faut appuyer sur continuer et la suite du quiz continue dans le terminal
     tk.Button(SoireQuiz, text="Activer joker", command=bouton_joker).pack()
