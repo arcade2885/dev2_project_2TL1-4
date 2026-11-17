@@ -1,3 +1,4 @@
+from gui import gui 
 from equipe import Equipe, CreerEquipe, SameNameError
 from storage import load_data_equipe, save_data_equipe, save_data_question, load_data_question
 from joker import utiliser_joker
@@ -40,8 +41,8 @@ def main():
         elif input_choice == "3":
             while True:
                 #question = question()
-                #question.estAffichee = False # a changer plus tard 
-                #question.estPariable = False # a changer plus tard 
+                question.estAffichee = False # a changer plus tard 
+                question.estPariable = False # a changer plus tard 
 
                 participations = []
                 for e in mes_equipes:
@@ -49,7 +50,8 @@ def main():
                     p.jokerActif = False # a changer plus tard
                     participations = participations + [p]
 
-                utiliser_joker(mes_equipes, question, participations)
+                gui(mes_equipes, question, participations)
+                
 
                 choix = afficherQuestion(mes_questions)
                 afficherReponse(choix, mes_questions)
