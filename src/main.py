@@ -26,7 +26,7 @@ def main():
         print("1. Créer une nouvelle équipe")
         print("2. Afficher les équipes existantes")
         print("3. Question")
-        print("4. reset les scores")
+        print("4. Reset les scores")
         print("5. Quitter le jeu")
         input_choice = input("Choisissez une option (1-5) : ")
         if input_choice == "1":
@@ -50,7 +50,7 @@ def main():
                     p.jokerActif = False # a changer plus tard
                     participations = participations + [p]
 
-                gui(mes_equipes, question, participations)
+                gui(mes_equipes, question, participations, mes_questions)
                 
 
                 choix = afficherQuestion(mes_questions)
@@ -154,7 +154,7 @@ def new_team():
 def end_game():
     print("Merci d'avoir joué !")
     save_data(mes_equipes)
-    
+
 
 
 
