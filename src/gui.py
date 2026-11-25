@@ -10,7 +10,7 @@ def gui(equipes, question, participations):
     txtEquipes = ""
     i = 0
     for e in equipes:
-        txtEquipes = txtEquipes + str(i) + " " + e.nom + "\n"
+        txtEquipes = txtEquipes + str(e.id) + " " + e.nom + "\n"
         i = i + 1
 
 
@@ -33,10 +33,10 @@ def gui(equipes, question, participations):
             mess.config(text="Numéro pas valide!!")
             return
 
-        if num < 0 or num >= len(equipes):
+        if num <= 0 or num >= len(equipes)+1:
             mess.config(text="Numéro pas valide!!")
         else:
-                mess.config(text=activer_joker(equipes[num], question, participations[num]))
+                mess.config(text=activer_joker(equipes[num-1], question, participations[num]))
                 classement.config(text=afficher_classement(equipes))
 
 
