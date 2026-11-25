@@ -51,10 +51,6 @@ def main():
                     participations = participations + [p]
 
                 gui(mes_equipes, question, participations, mes_questions)
-                
-
-                choix = afficherQuestion(mes_questions)
-                afficherReponse(choix, mes_questions)
                 add_points(jocker_active)
                 print(afficher_classement(mes_equipes))
                 print("1. Continuer avec une autre question")

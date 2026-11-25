@@ -6,7 +6,6 @@ from tkinter import ttk
 def gui(equipes, question, participations, mes_questions):
     SoireQuiz = tk.Tk()
     SoireQuiz.title("Soiré Quiz")
-
     SoireQuiz.geometry("700x400")
     SoireQuiz.resizable(False, False)
 
@@ -26,8 +25,7 @@ def gui(equipes, question, participations, mes_questions):
         choix.pack(pady=10)
 
         def confirmer():
-            indice = choix.current()
-            afficher_question(indice)
+            afficher_question(choix.current())
 
         tk.Button(
             SoireQuiz,
@@ -64,8 +62,8 @@ def gui(equipes, question, participations, mes_questions):
 
         tk.Button(
             SoireQuiz,
-            text="Continuer",
-            command=afficher_questions
+            text="Retour au terminal",
+            command=SoireQuiz.destroy
         ).pack()
 
     txtEquipes = ""
