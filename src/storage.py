@@ -38,6 +38,27 @@ def load_data_equipe(data_equipe = DATA_FILE_EQUIPE) :
         print("ERROR")
         return []
 
+def load_data_question(data_question = DATA_FILE_QUESTION) :
+    """if not data_question.exists():
+        print('no data')
+        return []
+
+    try:
+         with open(data_question, "r", encoding="utf-8") as file:
+            data = json.load(file)
+            questions_data = data.get("questions", [])
+            questions = [question.from_dict(q) for q in questions_data]
+            if questions:
+                max_id = max(q.id for q in questions)
+                question.id = itertools.count(max_id + 1)
+            return questions
+    except (json.JSONDecodeError, OSError):
+        print("ERROR")
+        return []"""
+    load_data_equipe(data_question)
+#save_data({"equipes":[1,2,3,4]})
+#print(load_data())
+
 def save_data_equipe(listEquipes: list, data_equipe =DATA_FILE_EQUIPE):
     """Enregistre la liste d'équipes dans le fichier JSON.
 
@@ -53,30 +74,11 @@ def save_data_equipe(listEquipes: list, data_equipe =DATA_FILE_EQUIPE):
         json.dump(data, file)
 
 def save_data_question(listQuestions: list,data_question =DATA_FILE_QUESTION ):
-    DATA_DIR.mkdir(parents=True,exist_ok=True)
+    '''DATA_DIR.mkdir(parents=True,exist_ok=True)
     data ={"questions": [q.to_dict() for q in listQuestions]}
     with open(data_question, "w", encoding="utf-8") as file:
-        json.dump(data, file)
-
-def load_data_question(data_question = DATA_FILE_QUESTION) :
-    if not data_question.exists():
-        print('no data')
-        return []
-
-    try:
-         with open(data_question, "r", encoding="utf-8") as file:
-            data = json.load(file)
-            questions_data = data.get("questions", [])
-            questions = [question.from_dict(q) for q in questions_data]
-            if questions:
-                max_id = max(q.id for q in questions)
-                question.id = itertools.count(max_id + 1)
-            return questions
-    except (json.JSONDecodeError, OSError):
-        print("ERROR")
-        return []
-#save_data({"equipes":[1,2,3,4]})
-#print(load_data())
+        json.dump(data, file)'''
+    save_data_equipe(listQuestions,data_question)
 
 
 
