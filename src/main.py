@@ -1,5 +1,5 @@
 from gui import gui 
-from equipe import Equipe, CreerEquipe, SameNameError, supp_toutes_equipes
+from equipe import Equipe, CreerEquipe, SameNameError, supp_toutes_equipes, supp_equipe
 from storage import load_data_equipe, save_data_equipe, save_data_question, load_data_question
 from joker import utiliser_joker
 from classement import afficher_classement
@@ -23,22 +23,23 @@ def main():
     while True:
         # mes_equipes = load_data()
         print("\nMenu principal :")
-        print("1. Créer une nouvelle équipe")
+        print("1. gérer les équipes")
         print("2. Afficher les équipes existantes")
         print("3. Question")
-        print("4. Reset les scores")
-        print("5. Supprimer toutes les équipes")
-        print("6. Quitter le jeu")
-        input_choice = input("Choisissez une option (1-5) : ")
+        print("4. Quitter le jeu")
+        
+        input_choice = input("Choisissez une option (1-6) : ")
         if input_choice == "1":
-            new_team()
+            gerer_equipes()
+            
         elif input_choice == "2":
             if not mes_equipes:
-                print("Aucune équipe n'existe.")
+                print("\n Aucune équipe n'existe.")
             else:
-                print("Équipes existantes :")
+                print("\n Équipes existantes :")
                 for equipe in mes_equipes:
                     print(equipe)
+                    
         elif input_choice == "3":
             while True:
                 #question = question()
@@ -61,18 +62,52 @@ def main():
                     continue
                 elif sub_choice == "2":
                     break
+
         elif input_choice == "4":
-            reset_scores()
-
-        elif input_choice == "5":
-            supp_toutes_equipes(mes_equipes)
-            save_data(mes_equipes)
-
-        elif input_choice == "6":
             end_game()
             break
             
-                    
+def gerer_equipes():
+    while True:
+        print("\nGestion des équipes :")
+        print("1. Créer une équipe")
+        print("2. réinitialiser les scores")
+        print("3. Supprimer une équipe")
+        print("4. supprimer toute les equipes")
+        print("5. Retour au menu principal")
+        choix = input("Choisissez une option (1-5) : ")
+
+        if choix == "1":
+            new_team()
+            
+        elif choix == "2":
+            reset_scores()
+
+        elif choix == "3":
+            if not mes_equipes:
+                print("Aucune équipe n'existe.")
+                continue
+
+            for equipe in mes_equipes:
+                print(equipe)
+
+            try:
+                id_equipe = int(input("Entrez l'ID de l'équipe à supprimer : "))
+            except ValueError:
+                print("Veuillez entrer un identifiant numérique.")
+                continue
+
+            supp_equipe(mes_equipes, id_equipe)
+            save_data(mes_equipes)
+            
+        elif choix == "4":
+            supp_toutes_equipes(mes_equipes)
+            save_data(mes_equipes)
+        elif choix == "5":
+            break
+        else:
+            print("Option invalide.")
+            
 
 def add_points(jocker):
     """
