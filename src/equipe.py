@@ -65,3 +65,14 @@ def main():
 if __name__ == "__main__":
     main()
 '''
+
+def supp_toutes_equipes(mes_equipes):
+    confirmation = input("sur de vouloir supprimer tout les equipe et leurs donné ? oui/non : ")
+    if confirmation == "oui":
+        double_confirm = input("toute les equipe sont entrain d'etre supprimer etes vous vraiment sur aucun retour en arriere possible")
+        if double_confirm == "oui":
+            mes_equipes.clear()
+            Equipe.id = itertools.count(1)  # reset les id aussi pour repartir de 1
+            print("toute les equipe supprimer")
+
+

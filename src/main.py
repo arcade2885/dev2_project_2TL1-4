@@ -1,5 +1,5 @@
 from gui import gui 
-from equipe import Equipe, CreerEquipe, SameNameError
+from equipe import Equipe, CreerEquipe, SameNameError, supp_toutes_equipes
 from storage import load_data_equipe, save_data_equipe, save_data_question, load_data_question
 from joker import utiliser_joker
 from classement import afficher_classement
@@ -17,17 +17,18 @@ mes_equipes = load_data()
 
 
 def main():
-    mes_equipes = load_data()
+    # mes_equipes = load_data()
     jocker_active = False
     mes_questions = load_data_question()
     while True:
-        mes_equipes = load_data()
+        # mes_equipes = load_data()
         print("\nMenu principal :")
         print("1. Créer une nouvelle équipe")
         print("2. Afficher les équipes existantes")
         print("3. Question")
         print("4. Reset les scores")
-        print("5. Quitter le jeu")
+        print("5. Supprimer toutes les équipes")
+        print("6. Quitter le jeu")
         input_choice = input("Choisissez une option (1-5) : ")
         if input_choice == "1":
             new_team()
@@ -62,7 +63,12 @@ def main():
                     break
         elif input_choice == "4":
             reset_scores()
+
         elif input_choice == "5":
+            supp_toutes_equipes(mes_equipes)
+            save_data(mes_equipes)
+
+        elif input_choice == "6":
             end_game()
             break
             
