@@ -1,5 +1,5 @@
 def afficher_classement(equipes):
-    classement = "Classement : "
+    classement = "\nClassement : "
     nb = 1
     equipes.sort(key=lambda equipe: equipe.scoreTotal, reverse=True)
 

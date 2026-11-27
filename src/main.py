@@ -55,7 +55,7 @@ def main():
                 gui(mes_equipes, question, participations, mes_questions)
                 add_points(jocker_active)
                 print(afficher_classement(mes_equipes))
-                print("1. Continuer avec une autre question")
+                print("\n1. Continuer avec une autre question")
                 print("2. Retour au menu principal")
                 sub_choice = input("Choisissez une option (1-2) : ")
                 if sub_choice == "1":
@@ -87,7 +87,7 @@ def gerer_equipes():
             if not mes_equipes:
                 print("Aucune équipe n'existe.")
                 continue
-
+            print("\n")
             for equipe in mes_equipes:
                 print(equipe)
 
@@ -119,7 +119,7 @@ def add_points(jocker):
     """
     for i in range(len(mes_equipes)):
         print(f"Équipe {mes_equipes[i].nom} ID: {mes_equipes[i].id}")
-    print('quelle equipe a reçu les points ?')
+    print('\n quelle equipe a reçu les points ?')
     input_choice = input("Entrez le ID de l'équipe : ")
     for equipe in mes_equipes:
         if equipe.id == int(input_choice):
@@ -127,7 +127,7 @@ def add_points(jocker):
             if jocker:
                 points *= 2
             equipe.ajouterPoints(points)
-            print(f"{points} points ajoutés à l'équipe {equipe.nom}.")
+            print(f"\n{points} points ajoutés à l'équipe {equipe.nom}.")
             save_data(mes_equipes)
             return
     print('test points', jocker)
