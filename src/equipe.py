@@ -65,6 +65,22 @@ def main():
 if __name__ == "__main__":
     main()
 '''
+def supp_equipe(mes_equipes:list,Id_equipe:int)->list:
+    """Supprime l'équipe dont l'identifiant est Id_equipe.
+
+    Pre : mes_equipes contient des objets Equipe ayant un attribut id.
+    Post : l'équipe correspondante est retirée de mes_equipes. Si aucun
+    identifiant ne correspond, la liste reste inchangée.
+    """
+    for equipe in mes_equipes:
+        if equipe.id == Id_equipe:
+            mes_equipes.remove(equipe)
+            return mes_equipes
+
+    return mes_equipes
+
+
+
 
 def supp_toutes_equipes(mes_equipes):
     confirmation = input("sur de vouloir supprimer tout les equipe et leurs donné ? oui/non : ")
