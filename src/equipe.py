@@ -65,6 +65,18 @@ def main():
 if __name__ == "__main__":
     main()
 '''
+
+def list_equipes(mes_equipes):
+    if not mes_equipes:
+        print("\n Aucune équipe n'existe.")
+    else:
+        print("\n Équipes existantes :")
+        for equipe in mes_equipes:
+            print(equipe)
+
+
+
+
 def supp_equipe(mes_equipes:list,Id_equipe:int)->list:
     """Supprime l'équipe dont l'identifiant est Id_equipe.
 
@@ -92,3 +104,32 @@ def supp_toutes_equipes(mes_equipes):
             print("toute les equipe supprimer")
 
 
+def renommer_equipe(mes_equipes):
+
+    list_equipes(mes_equipes)
+
+    if not mes_equipes:
+        return
+    try:
+        id_equipe = int(input("Entrer od de l'équipe a renommé"))
+    except ValueError:
+        print("Entrez un chiffre")
+        return
+
+
+    for e in mes_equipes:
+
+        if e.id == id_equipe:
+            equipe_renommer = input("Entrez le nouveau nom de l'equipe")
+
+            if equipe_renommer == "":
+                print("Impossible de renommé une quipe avec rien")
+                return
+            
+            e.nom = equipe_renommer
+            return
+
+
+
+
+            

@@ -1,5 +1,5 @@
 from gui import gui 
-from equipe import Equipe, CreerEquipe, SameNameError, supp_toutes_equipes, supp_equipe
+from equipe import Equipe, CreerEquipe, SameNameError, list_equipes, supp_toutes_equipes, supp_equipe, renommer_equipe
 from storage import load_data_equipe, save_data_equipe, save_data_question, load_data_question
 from joker import utiliser_joker
 from classement import afficher_classement
@@ -33,12 +33,7 @@ def main():
             gerer_equipes()
             
         elif input_choice == "2":
-            if not mes_equipes:
-                print("\n Aucune équipe n'existe.")
-            else:
-                print("\n Équipes existantes :")
-                for equipe in mes_equipes:
-                    print(equipe)
+            list_equipes(mes_equipes)
                     
         elif input_choice == "3":
             while True:
@@ -71,19 +66,24 @@ def gerer_equipes():
     while True:
         print("\nGestion des équipes :")
         print("1. Créer une équipe")
-        print("2. réinitialiser les scores")
-        print("3. Supprimer une équipe")
-        print("4. supprimer toute les equipes")
-        print("5. Retour au menu principal")
+        print("2. Rennomer une equipe")
+        print("3. réinitialiser les scores")
+        print("4. Supprimer une équipe")
+        print("5. supprimer toute les equipes")
+        print("6. Retour au menu principal")
         choix = input("Choisissez une option (1-5) : ")
 
         if choix == "1":
             new_team()
-            
+
         elif choix == "2":
+            renommer_equipe(mes_equipes)
+            save_data(mes_equipes)
+            
+        elif choix == "3":
             reset_scores()
 
-        elif choix == "3":
+        elif choix == "4":
             if not mes_equipes:
                 print("Aucune équipe n'existe.")
                 continue
@@ -100,10 +100,10 @@ def gerer_equipes():
             supp_equipe(mes_equipes, id_equipe)
             save_data(mes_equipes)
             
-        elif choix == "4":
+        elif choix == "5":
             supp_toutes_equipes(mes_equipes)
             save_data(mes_equipes)
-        elif choix == "5":
+        elif choix == "6":
             break
         else:
             print("Option invalide.")
