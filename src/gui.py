@@ -92,11 +92,14 @@ def gui(equipes, question, participations, mes_questions):
             mess.config(text="Numéro pas valide!!")
             return
 
-        if num <= 0 or num >= len(equipes)+1:
-            mess.config(text="Numéro pas valide!!")
-        else:
-                mess.config(text=activer_joker(equipes[num-1], question, participations[num - 1]))
+        for e in equipes:
+            if e.id == num:
+                mess.config(text=activer_joker(e, question, participations[e.id]))
                 classement.config(text=afficher_classement(equipes))
+                return
+
+        mess.config(text="Numéro pas valide!!")
+
 
 
 

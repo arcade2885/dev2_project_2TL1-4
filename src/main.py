@@ -18,7 +18,7 @@ mes_equipes = load_data()
 
 def main():
     # mes_equipes = load_data()
-    jocker_active = False
+    # jocker_active = False
     mes_questions = load_data_question()
     while True:
         # mes_equipes = load_data()
@@ -41,14 +41,14 @@ def main():
                 question.estAffichee = False # a changer plus tard 
                 question.estPariable = False # a changer plus tard 
 
-                participations = []
+                participations = {}
                 for e in mes_equipes:
                     p = Participation()
                     p.jokerActif = False # a changer plus tard
-                    participations = participations + [p]
+                    participations[e.id] = p
 
                 gui(mes_equipes, question, participations, mes_questions)
-                add_points(jocker_active)
+                # add_points(jocker_active)
                 print(afficher_classement(mes_equipes))
                 print("\n1. Continuer avec une autre question")
                 print("2. Retour au menu principal")
@@ -120,17 +120,20 @@ def add_points(jocker):
     for i in range(len(mes_equipes)):
         print(f"Équipe {mes_equipes[i].nom} ID: {mes_equipes[i].id}")
     print('\n quelle equipe a reçu les points ?')
-    input_choice = input("Entrez le ID de l'équipe : ")
+    try:
+        input_choice = int(input("Entrez le ID de l'équipe : "))
+    except ValueError:
+        print("Entrer un chiffre et pas une lettre ou un id valide")
     for equipe in mes_equipes:
-        if equipe.id == int(input_choice):
+        if equipe.id == input_choice:  
             points = 1
-            if jocker:
+            if jocker[equipe.id].jokerActif:
                 points *= 2
             equipe.ajouterPoints(points)
             print(f"\n{points} points ajoutés à l'équipe {equipe.nom}.")
             save_data(mes_equipes)
             return
-    print('test points', jocker)
+    print("Aucune équipe n'est lier a cette id")
 
 def reset_scores():
     for equipe in mes_equipes:
